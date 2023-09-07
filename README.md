@@ -37,7 +37,7 @@ Using an input file for our `tailwind-css` will tell trunk to download the tailw
 We'll use a compiled output file for our `css` link and tell trunk to use it. 
 
 ```html
-    <link data-trunk rel="css" href="style/input.css" />
+    <link data-trunk rel="css" href="style/output.css" />
 ```
 
 This will allow us to run a pre-build `tailwind` command with more control over the options we want like minify in our case. We create a `Trunk.toml` file with a pre-build hooks command to run when we are developing and releasing our site.
