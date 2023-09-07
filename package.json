@@ -6,7 +6,9 @@
     "tw": "tailwindcss -i style/input.css -o style/output.css",
     "tw:dev": "tailwindcss -i style/input.css -o style/output.css --watch",
     "tw:release": "tailwindcss -i style/input.css -o style/output.css --minify",
-    "dev": "trunk serve --open"
+    "dev": "trunk serve --open",
+    "clean": "rm ./style/output.css && rm -rf dist",
+    "build": "yarn tw:release && trunk build --release"
   },
   "repository": "git@github.com:talves/leptos-tutorial-example.git",
   "author": "talves <tony@3alves.com>",
