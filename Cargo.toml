@@ -1,0 +1,12 @@
+[package]
+name = "leptos-tailwind"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+console_error_panic_hook = { version ="0.1" }
+console_log = { version ="1" }
+leptos = { version = "0.4.10", features = ["csr", "nightly"] }
+leptos_meta = { version = "0.4.10", features = ["csr", "nightly"] }
+leptos_router = { version = "0.4.10", features = ["csr", "nightly"] }
+log = "0.4.20"

@@ -1,0 +1,17 @@
+{
+  "name": "leptos-tutorial",
+  "version": "0.0.1",
+  "main": "index.html",
+  "scripts": {
+    "tw": "tailwindcss -i style/input.css -o style/output.css",
+    "tw:dev": "tailwindcss -i style/input.css -o style/output.css --watch",
+    "tw:release": "tailwindcss -i style/input.css -o style/output.css --minify",
+    "dev": "trunk serve --open"
+  },
+  "repository": "git@github.com:talves/leptos-tutorial-example.git",
+  "author": "talves <tony@3alves.com>",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
