@@ -1,6 +1,6 @@
 use leptos::*;
 use leptos_meta::*;
-use crate::components::container::{Container, Main, ContainerFromProp};
+use crate::components::{container::{Container, Main, ContainerFromProp}, buttons::button::{ButtonClassVariant, Button}, theme::toggle::ThemeToggleButton};
 
 #[component]
 pub fn Home(cx: Scope) -> impl IntoView {
@@ -20,7 +20,7 @@ pub fn Home(cx: Scope) -> impl IntoView {
                         Preview
                     </p>
                     <ContainerFromProp render_view=|| view! { cx, <p class="mt-1 text-white font-medium">
-                        {"There's really nothing to see here"}
+                        {"This is content from a render_view property"}
                     </p>} />
                     </div>
                     // <!-- End Col -->
@@ -31,11 +31,27 @@ pub fn Home(cx: Scope) -> impl IntoView {
                     </a>
                     </div>
                     // <!-- End Col -->
+                    <div class="border rounded-xl shadow-sm p-6 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="inline-block">
+                            <Button class="ml-0 mx-1 bg-blue-400" on_click={|e| println!("{}", e.to_string())}>{"Default (Unstyled)"}</Button>
+                            <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().expect("missing target"))} variant={ButtonClassVariant::Solid}>{"Solid"}</Button>
+                            <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Outline}>{"Outline"}</Button>
+                            <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Ghost}>{"Ghost"}</Button>
+                            <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Soft}>{"Soft"}</Button>
+                            <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::White}>{"White"}</Button>
+                            <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Link}>{"Link"}</Button>
+                            <ThemeToggleButton class="ml-0 mx-1 dark:text-gray-300">{"Toggle Light/Dark"}</ThemeToggleButton>
+                        </div>
+
+                    </div>
                 </div>
                 //   <!-- End Grid -->
                 </div>
             </Container>
         //   <!-- End Announcement Banner -->
         </Main>
+        // An empty Fragment is not created on the DOM
+        {Fragment::new(vec![])}
       }
+
 }
