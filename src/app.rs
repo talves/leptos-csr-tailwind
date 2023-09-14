@@ -2,10 +2,7 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
-use crate::pages:: {
-    home::Home,
-    counter::Counter,
-};
+use crate::pages::{counter::Counter, home::Home};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -23,4 +20,3 @@ pub fn App(cx: Scope) -> impl IntoView {
         </Router>
     }
 }
-

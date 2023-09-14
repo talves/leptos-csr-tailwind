@@ -9,8 +9,6 @@ pub fn IconSun(
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
 ) -> impl IntoView {
-
-
     view! { cx,
         <svg
             id=id
@@ -34,8 +32,6 @@ pub fn IconMoon(
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
 ) -> impl IntoView {
-
-
     view! { cx,
         <svg
         id=id

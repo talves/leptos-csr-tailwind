@@ -1,8 +1,8 @@
-use std::fmt::{Display, Formatter};
 use leptos::{ev::MouseEvent, *};
+use std::fmt::{Display, Formatter};
 
-use crate::OptionMaybeSignal;
 use crate::components::variants::base::ClassVariant;
+use crate::OptionMaybeSignal;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum ButtonClassVariant {
@@ -16,7 +16,7 @@ pub enum ButtonClassVariant {
     Link,
 }
 
-impl ClassVariant for ButtonClassVariant  {
+impl ClassVariant for ButtonClassVariant {
     fn as_vec(&self) -> Vec<&'static str> {
         match self {
             ButtonClassVariant::Unstyled => "".split(" ").collect::<Vec<&str>>(),
@@ -54,7 +54,6 @@ pub fn Button<F>(
 where
     F: Fn(MouseEvent) + 'static,
 {
-
     view! { cx,
         <button
             id=id
