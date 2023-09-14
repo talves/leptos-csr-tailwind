@@ -1,10 +1,10 @@
-use crate::components::{
+use leptos::*;
+use leptos_meta::*;
+use leptos_tw_ui::components::{
     buttons::button::{Button, ButtonClassVariant},
     container::{Container, ContainerFromProp, Main},
     theme::toggle::ThemeToggleButton,
 };
-use leptos::*;
-use leptos_meta::*;
 
 #[component]
 pub fn Home(cx: Scope) -> impl IntoView {
