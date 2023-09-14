@@ -29,6 +29,8 @@ pub fn Home(cx: Scope) -> impl IntoView {
                     <a class="py-3 px-6 inline-flex justify-center items-center gap-2 rounded-full font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm" href="/counter">
                         Click for Counter
                     </a>
+                    <ThemeToggleButton class="text-primary-500 dark:text-primary-400 hover:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none rounded-2xl text-sm p-1"
+                            icon_class="w-9 h-9 fill-gray-300 dark:fill-gray-500" />
                     </div>
                     // <!-- End Col -->
                     <div class="border rounded-xl shadow-sm p-6 dark:bg-gray-800 dark:border-gray-700">
@@ -40,7 +42,6 @@ pub fn Home(cx: Scope) -> impl IntoView {
                             <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Soft}>{"Soft"}</Button>
                             <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::White}>{"White"}</Button>
                             <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Link}>{"Link"}</Button>
-                            <ThemeToggleButton class="ml-0 mx-1 dark:text-gray-300">{"Toggle Light/Dark"}</ThemeToggleButton>
                         </div>
 
                     </div>
