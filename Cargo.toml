@@ -1,14 +1,12 @@
-[package]
-name = "leptos-tailwind"
-version = "0.1.0"
+[workspace]
+resolver = "2"
 edition = "2021"
+members = ["crates/leptos-tw-ui", "site"]
+# exclude = ["site"]
 
-[dependencies]
-console_error_panic_hook = { version ="0.1" }
-console_log = { version ="1" }
-leptos = { version = "0.4.10", features = ["csr", "nightly"] }
-leptos_meta = { version = "0.4.10", features = ["csr", "nightly"] }
-leptos_router = { version = "0.4.10", features = ["csr", "nightly"] }
-log = "0.4.20"
-wasm-bindgen = "0.2.87"
-web-sys = { version = "0.3.64", features = ["Window", "HtmlElement", "Document", "Storage", "MediaQueryList"] }
+[workspace.package]
+version = "0.1.0"
+
+[workspace.dependencies]
+leptos-tw-ui = { path = "crates/leptos-tw-ui", default-features = false }
+site = { path = "./site", default-features = false }

@@ -1,6 +1,6 @@
 [build]
-target = "index.html"
-dist = "dist"
+target = "site/index.html"
+dist = "site/dist"
 
 [[hooks]]
 stage = "pre_build"

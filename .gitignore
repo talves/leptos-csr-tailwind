@@ -1,6 +1,6 @@
 /node_modules
-/target
-/dist
+target/
+dist/
 
 # css style output (tailwind)
-/style/output.css
+/site/style/output.css
