@@ -18,7 +18,10 @@ pub fn ThemeToggleButton(
 
     fn theme_mode(toggle: bool) -> &'static str {
         // Resolves theme_mode to a splice light|dark for default light
-        fn resolve_toggle(theme_mode: String, toggle: bool) -> &'static str {
+        fn resolve_toggle(theme_mode: String, toggle: bool, system_dark_preferred: bool) -> &'static str {
+            let theme_mode = if theme_mode == "" && !toggle {
+                if system_dark_preferred { "dark".to_string() } else { "light".to_string() }
+            } else { theme_mode };
             let theme_mode = if theme_mode != "dark" {"light"} else {"dark"};
             if !&toggle {
                 // Resolve to the splice value
@@ -37,17 +40,23 @@ pub fn ThemeToggleButton(
         let document = window.document().expect("expected document on window");
         let body = document.body().expect("document expect to have have a body").dyn_into::<web_sys::HtmlBodyElement>().unwrap();
         let local_storage = window.local_storage().expect("No access to local storage");
+        let media = window.match_media("(prefers-color-scheme: dark)").expect("No access to media query");
+        let system_dark_preferred = match media {
+            Some(query) => query.matches(),
+            None => false,
+        };
+        // web_sys::console::log_1(&wasm_bindgen::JsValue::from(&system_dark_preferred.to_string()));
         let mut stored_theme_mode= match local_storage {
             Some(storage) => match storage.get("theme-mode") {
                 Ok(value) => {
                     let new_theme_mode: &str = match value {
                         Some(theme_mode) => {
-                            resolve_toggle(theme_mode, toggle)
+                            resolve_toggle(theme_mode, toggle, false)
                         },
                         // No theme-mode found in local storage
                         None => {
                             // Check for class name on body
-                            resolve_toggle(body.class_name(), toggle)
+                            resolve_toggle(body.class_name(), toggle, system_dark_preferred)
                         },
                     };
                     let _ = storage.set("theme-mode", new_theme_mode);
@@ -58,7 +67,7 @@ pub fn ThemeToggleButton(
             None => "",
         };
         if stored_theme_mode == "" {
-            stored_theme_mode = resolve_toggle(body.class_name(), toggle);
+            stored_theme_mode = resolve_toggle(body.class_name(), toggle, system_dark_preferred);
             // There was an error accessing local storage, so use the body class name
             body.set_class_name(stored_theme_mode);
         } else {

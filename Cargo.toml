@@ -11,4 +11,4 @@ leptos_meta = { version = "0.4.10", features = ["csr", "nightly"] }
 leptos_router = { version = "0.4.10", features = ["csr", "nightly"] }
 log = "0.4.20"
 wasm-bindgen = "0.2.87"
-web-sys = { version = "0.3.64", features = ["Window", "HtmlElement", "Document", "Storage"] }
+web-sys = { version = "0.3.64", features = ["Window", "HtmlElement", "Document", "Storage", "MediaQueryList"] }
