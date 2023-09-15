@@ -1,7 +1,8 @@
+use crate::theme::ButtonVariant;
 use leptos::*;
 use leptos_meta::*;
 use leptos_tw_ui::components::{
-    buttons::button::{Button, ButtonClassVariant},
+    buttons::button::Button,
     container::{Container, ContainerFromProp, Main},
     theme::toggle::ThemeToggleButton,
     typography::*,
@@ -42,12 +43,12 @@ pub fn Home(cx: Scope) -> impl IntoView {
                   <div class="border rounded-xl shadow-sm p-6 dark:bg-gray-800 dark:border-gray-700">
                       <div class="inline-block">
                           <Button class="ml-0 mx-1 bg-blue-400" on_click={|e| println!("{}", e.to_string())}>{"Default (Unstyled)"}</Button>
-                          <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().expect("missing target"))} variant={ButtonClassVariant::Solid}>{"Solid"}</Button>
-                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Outline}>{"Outline"}</Button>
-                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Ghost}>{"Ghost"}</Button>
-                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Soft}>{"Soft"}</Button>
-                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::White}>{"White"}</Button>
-                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonClassVariant::Link}>{"Link"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().expect("missing target"))} variant={ButtonVariant::Solid.get()}>{"Solid"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Outline.get()}>{"Outline"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Ghost.get()}>{"Ghost"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Soft.get()}>{"Soft"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::White.get()}>{"White"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Link.get()}>{"Link"}</Button>
                       </div>
 
                   </div>
