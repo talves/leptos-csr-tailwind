@@ -4,6 +4,7 @@ use leptos_tw_ui::components::{
     buttons::button::{Button, ButtonClassVariant},
     container::{Container, ContainerFromProp, Main},
     theme::toggle::ThemeToggleButton,
+    typography::*,
 };
 
 #[component]
@@ -20,6 +21,7 @@ pub fn Home(cx: Scope) -> impl IntoView {
               //   <!-- Grid -->
               <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
                   <div class="text-center md:text-left">
+                  <Typography variant=TypographyVariant::H1 class="font-weight-20 text-3xl text-blue-800 dark:text-gray-200">Typography H1</Typography>
                   <p class="text-sm text-white/[.8] uppercase tracking-wider">
                       Preview
                   </p>

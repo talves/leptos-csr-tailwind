@@ -16,6 +16,7 @@ pub enum ButtonClassVariant {
     Link,
 }
 
+// TODO: convert class str values to a css variable then resolve through a theme provider instead
 impl ClassVariant for ButtonClassVariant {
     fn as_vec(&self) -> Vec<&'static str> {
         match self {

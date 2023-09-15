@@ -7,9 +7,8 @@ pub fn Container(
     #[prop(into, optional)] class: Option<AttributeValue>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
-) -> impl IntoView
-{
-    view! {cx, 
+) -> impl IntoView {
+    view! {cx,
         <div id=id class=class style=style>
             {children(cx)}
         </div>
@@ -25,9 +24,9 @@ pub fn ContainerFromProp<F, IV>(
 ) -> impl IntoView
 where
     F: Fn() -> IV,
-    IV: IntoView
+    IV: IntoView,
 {
-    view! {cx, 
+    view! {cx,
         <>{render_view()}</>
     }
 }
@@ -39,9 +38,8 @@ pub fn Main(
     #[prop(into, optional)] class: Option<AttributeValue>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
-) -> impl IntoView
-{
-    view! {cx, 
+) -> impl IntoView {
+    view! {cx,
         <main id=id role="main" class=class style=style>
             {children(cx)}
         </main>
