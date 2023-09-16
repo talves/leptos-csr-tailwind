@@ -59,3 +59,27 @@ where
         </button>
     }
 }
+
+#[component]
+pub fn LinkButton(
+    cx: Scope,
+    #[prop(into, optional)] variant: OptionMaybeSignal<ButtonClassVariant>,
+    #[prop(into, optional)] disabled: OptionMaybeSignal<bool>,
+    #[prop(into, optional)] id: Option<AttributeValue>,
+    #[prop(into, optional)] class: OptionMaybeSignal<String>,
+    #[prop(into, optional)] style: Option<AttributeValue>,
+    href: &'static str,
+    children: Children,
+) -> impl IntoView {
+    view! { cx,
+        <a
+            id=id
+            href=href // format!("{}", )
+            class=format!("{} {}", variant.get(), class.get())
+            style=style
+            aria-disabled=move || disabled.get()
+        >
+            { children(cx) }
+        </a>
+    }
+}
