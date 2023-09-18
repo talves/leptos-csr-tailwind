@@ -1,15 +1,17 @@
+use crate::{components::variants::base::ClassVariant, OptionMaybeSignal};
 use leptos::*;
 
 #[component]
 pub fn Container(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] variant: OptionMaybeSignal<ClassVariant>,
+    #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! {cx,
-        <div id=id class=class style=style>
+        <div id=id class={format!("{} {}", variant.get(), class.get())} style=style>
             {children(cx)}
         </div>
     }

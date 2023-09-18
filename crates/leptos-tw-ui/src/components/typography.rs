@@ -8,6 +8,7 @@ pub enum TypographyVariant {
     H5,
     H6,
     Paragraph,
+    Span,
     Code { inline: bool },
 }
 
@@ -84,6 +85,16 @@ pub fn Typography(
         TypographyVariant::Paragraph => P(
             cx,
             PProps {
+                id,
+                class,
+                style,
+                children,
+            },
+        )
+        .into_view(cx),
+        TypographyVariant::Span => Span(
+            cx,
+            SpanProps {
                 id,
                 class,
                 style,
@@ -207,6 +218,21 @@ pub fn P(
         <p id=id class=class style=style>
             {children(cx)}
         </p>
+    }
+}
+
+#[component]
+pub fn Span(
+    cx: Scope,
+    #[prop(into, optional)] id: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] style: Option<AttributeValue>,
+    children: Children,
+) -> impl IntoView {
+    view! { cx,
+        <span id=id class=class style=style>
+            {children(cx)}
+        </span>
     }
 }
 

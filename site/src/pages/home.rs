@@ -4,7 +4,6 @@ use leptos_meta::*;
 use leptos_tw_ui::components::{
     buttons::button::Button,
     container::{Container, ContainerFromProp, Main},
-    theme::toggle::ThemeToggleButton,
     typography::*,
 };
 
@@ -30,15 +29,32 @@ pub fn Home(cx: Scope) -> impl IntoView {
                   // <!-- End Col -->
 
                   <div class="mt-3 text-center md:text-left md:flex md:justify-end md:items-center">
-                  <a class="py-3 px-6 inline-flex justify-center items-center gap-2 rounded-full font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm" href="/counter">
-                      Click for Counter
-                  </a>
-                  <ThemeToggleButton class="mx-5 text-primary-500 dark:text-primary-400 hover:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none rounded-2xl text-sm p-1"
-                          icon_class="w-9 h-9 fill-gray-300 dark:fill-gray-500" />
+                     <Typography variant=TypographyVariant::H1 class="font-weight-20 text-3xl text-blue-800 dark:text-gray-200">Column 2 on this Grid</Typography>
                   </div>
                   // <!-- End Col -->
-                  <div class="border rounded-xl shadow-sm p-6 dark:bg-gray-800 dark:border-gray-700">
-                      <div class="inline-block">
+                  </div>
+                  //   <!-- End Grid -->
+                  <Typography variant=TypographyVariant::H1 class="font-weight-20 text-3xl text-blue-800 dark:text-gray-200">Buttons</Typography>
+                  <div class="border rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                      <div class="p-6 inline-block">
+                          <Button class="ml-0 mx-1 bg-blue-400" on_click={|e| println!("{}", e.to_string())}>{"Default (Unstyled)"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().unwrap())} variant={ButtonVariant::Solid.get()}>{"Solid"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Outline.get()}>{"Outline"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Ghost.get()}>{"Ghost"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Soft.get()}>{"Soft"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::White.get()}>{"White"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Link.get()}>{"Link"}</Button>
+                      </div>
+                      <div class="p-6 grid grid-cols-6 gap-4">
+                          <Button class="ml-0 mx-1 bg-blue-400" on_click={|e| println!("{}", e.to_string())}>{"Default (Unstyled)"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().unwrap())} variant={ButtonVariant::Solid.get()}>{"Solid"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Outline.get()}>{"Outline"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Ghost.get()}>{"Ghost"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Soft.get()}>{"Soft"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::White.get()}>{"White"}</Button>
+                          <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Link.get()}>{"Link"}</Button>
+                      </div>
+                      <div class="flex gap-2">
                           <Button class="ml-0 mx-1 bg-blue-400" on_click={|e| println!("{}", e.to_string())}>{"Default (Unstyled)"}</Button>
                           <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().unwrap())} variant={ButtonVariant::Solid.get()}>{"Solid"}</Button>
                           <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Outline.get()}>{"Outline"}</Button>
@@ -49,8 +65,6 @@ pub fn Home(cx: Scope) -> impl IntoView {
                       </div>
 
                   </div>
-              </div>
-              //   <!-- End Grid -->
               </div>
           </Container>
       //   <!-- End Announcement Banner -->

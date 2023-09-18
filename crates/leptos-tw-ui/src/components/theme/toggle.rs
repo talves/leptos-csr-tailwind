@@ -1,7 +1,7 @@
 use crate::{
     components::{
         buttons::button::Button,
-        icons::{IconMoon, IconSun},
+        icons::{IconMenuOff, IconMenuOn, IconMoon, IconSun},
     },
     OptionMaybeSignal,
 };
@@ -115,6 +115,37 @@ pub fn ThemeToggleButton(
         >
             <Show when=move || is_light.get() fallback=move |cx| view! {cx, <IconMoon class=dark_class.get() /> }>
                 <IconSun class=light_class.get() />
+            </Show>
+        </Button>
+    }
+}
+
+#[component]
+pub fn MenuToggleButton(
+    cx: Scope,
+    #[prop(into, optional)] id: Option<AttributeValue>,
+    #[prop(into, optional)] disabled: OptionMaybeSignal<bool>,
+    #[prop(into, optional)] class: OptionMaybeSignal<String>,
+    #[prop(into, optional)] icon_class: OptionMaybeSignal<String>,
+    #[prop(into, optional)] style: Option<AttributeValue>,
+    #[prop(into, optional)] active: Option<bool>,
+    // children: Children,
+) -> impl IntoView {
+    let (on_off, set_on_off) = create_signal(cx, active.unwrap_or(false));
+
+    let light_class = icon_class.clone();
+    let dark_class = icon_class.clone();
+
+    view! { cx,
+        <Button
+            id=id.unwrap_or(Box::new(""))
+            class=class
+            style=style.unwrap_or(Box::new(""))
+            on_click={move |_e| {set_on_off(!on_off.get());}}
+            disabled=disabled
+        >
+            <Show when={on_off} fallback=move |cx| view! {cx, <IconMenuOff class=dark_class.get() /> }>
+                <IconMenuOn class=light_class.get() />
             </Show>
         </Button>
     }
