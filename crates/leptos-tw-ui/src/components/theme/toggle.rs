@@ -121,7 +121,7 @@ pub fn ThemeToggleButton(
 }
 
 #[component]
-pub fn MenuToggleButton(
+pub fn MenuToggleButton<F>(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] disabled: OptionMaybeSignal<bool>,
@@ -129,8 +129,12 @@ pub fn MenuToggleButton(
     #[prop(into, optional)] icon_class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     #[prop(into, optional)] active: Option<bool>,
+    on_change: F,
     // children: Children,
-) -> impl IntoView {
+) -> impl IntoView
+where
+    F: Fn(bool) + 'static,
+{
     let (on_off, set_on_off) = create_signal(cx, active.unwrap_or(false));
 
     let light_class = icon_class.clone();
@@ -141,7 +145,7 @@ pub fn MenuToggleButton(
             id=id.unwrap_or(Box::new(""))
             class=class
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {set_on_off(!on_off.get());}}
+            on_click={move |_e| {set_on_off(!on_off.get());on_change(on_off.get());}}
             disabled=disabled
         >
             <Show when={on_off} fallback=move |cx| view! {cx, <IconMenuOff class=dark_class.get() /> }>

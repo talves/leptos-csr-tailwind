@@ -70,8 +70,6 @@ impl MenuHeaderVariant {
 
 pub enum MenuBarVariant {
     Default,
-    SectionRight,
-    SectionLeft,
 }
 
 impl MenuBarVariant {
@@ -88,29 +86,8 @@ impl MenuBarVariant {
             "sm:px-6",
             "lg:px-8",
         ];
-        const SECTION_R: &'static [&'static str] = &[
-            "w-full",
-            "flex",
-            "items-center",
-            "justify-end",
-            "ml-auto",
-            "sm:justify-between",
-            "sm:gap-x-3",
-            "sm:order-3",
-        ];
-        const SECTION_L: &'static [&'static str] = &[
-            "w-full",
-            "flex",
-            "items-center",
-            "justify-start",
-            "mr-auto",
-            "sm:gap-x-3",
-            "sm:order-3",
-        ];
         match self {
             MenuBarVariant::Default => ClassVariant::Vec(DEFAULT),
-            MenuBarVariant::SectionRight => ClassVariant::Vec(SECTION_R),
-            MenuBarVariant::SectionLeft => ClassVariant::Vec(SECTION_L),
         }
     }
 }
