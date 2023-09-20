@@ -10,7 +10,7 @@ use leptos_tw_ui::components::{
 
 use crate::{
     pages::{counter::Counter, home::Home},
-    theme::{default_switch_class, ButtonVariant, MenuBarVariant, MenuHeaderVariant},
+    theme::{ButtonVariant, MenuBarVariant, MenuHeaderVariant, ToggleSwitchClassVariant},
 };
 
 #[component]
@@ -62,9 +62,10 @@ fn Menu(cx: Scope) -> impl IntoView {
                             <LinkButton href="/counter" variant={ButtonVariant::Ghost.get()}>
                                 Counter
                             </LinkButton>
-                            <ThemeToggleButton mode_func={theme_mode} class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
+                            <ThemeToggleButton mode_fn={theme_mode} class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
                                 icon_class="w-9 h-9 fill-orange-300 dark:fill-yellow-300 dark:hover:fill-gray-800 hover:bg-yellow-200 dark:hover:bg-yellow-300 rounded-2xl" />
-                            <ThemeToggleSwitch mode_func={theme_mode} class={default_switch_class()} />
+                            <ThemeToggleSwitch mode_fn={theme_mode} class={ToggleSwitchClassVariant::Knob.get()} />
+                            <ThemeToggleSwitch mode_fn={theme_mode} class={ToggleSwitchClassVariant::Encased.get()} />
                         </div>
                     </div>
             </MenuBar>

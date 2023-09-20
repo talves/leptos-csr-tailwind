@@ -101,13 +101,13 @@ pub fn ThemeToggleButton<F>(
     /// Required: Fn(bool) -> &'static str
     /// * (use leptos_tw_ui::components::theme::toggle::theme_mode)
     /// * Or write your own function
-    mode_func: F,
+    mode_fn: F,
 ) -> impl IntoView
 where
     // Requires a function that takes a boolean value for toggle or just value
     F: Fn(bool) -> &'static str + 'static,
 {
-    let (theme, set_theme) = create_signal(cx, mode_func(false));
+    let (theme, set_theme) = create_signal(cx, mode_fn(false));
     let is_light = Signal::derive(cx, move || theme.get() == "light");
 
     let light_class = icon_class.clone();
@@ -118,7 +118,7 @@ where
             id=id.unwrap_or(Box::new(""))
             class=class
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {set_theme(mode_func(true));}}
+            on_click={move |_e| {set_theme(mode_fn(true));}}
             disabled=disabled
         >
             <Show when=move || is_light.get() fallback=move |cx| view! {cx, <IconMoon class=dark_class.get() /> }>
@@ -148,7 +148,7 @@ pub fn ThemeToggleSwitch<F>(
     /// Required: Fn(bool) -> &'static str
     /// * (use leptos_tw_ui::components::theme::toggle::theme_mode)
     /// * Or write your own function
-    mode_func: F,
+    mode_fn: F,
 ) -> impl IntoView
 where
     F: Fn(bool) -> &'static str + 'static,
@@ -158,7 +158,7 @@ where
             id=id.unwrap_or(Box::new(""))
             class=class.wrapper
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {mode_func(true);}}
+            on_click={move |_e| {mode_fn(true);}}
             disabled=disabled
         >
             <div class=class.bar /><span class="sr-only">Switch theme</span>
