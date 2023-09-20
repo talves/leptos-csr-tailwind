@@ -63,7 +63,8 @@ fn Menu(cx: Scope) -> impl IntoView {
                                 Counter
                             </LinkButton>
                             <ThemeToggleButton mode_fn={theme_mode} class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
-                                icon_class="w-9 h-9 fill-orange-300 dark:fill-yellow-300 dark:hover:fill-gray-800 hover:bg-yellow-200 dark:hover:bg-yellow-300 rounded-2xl" />
+                                icon_light_class="dark:hidden w-9 h-9 fill-orange-300 hover:bg-yellow-200 rounded-2xl"
+                                icon_dark_class="hidden dark:block w-9 h-9 fill-yellow-300 hover:fill-gray-800 hover:bg-yellow-300 rounded-2xl" />
                             <ThemeToggleSwitch mode_fn={theme_mode} class={ToggleSwitchClassVariant::Knob.get()} />
                             <ThemeToggleSwitch mode_fn={theme_mode} class={ToggleSwitchClassVariant::Encased.get()} />
                         </div>
