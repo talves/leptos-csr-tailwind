@@ -4,13 +4,13 @@ use leptos_router::*;
 use leptos_tw_ui::components::{
     buttons::button::LinkButton,
     menu::bars::{MenuBar, MenuHeader},
-    theme::toggle::{MenuToggleButton, ThemeToggleButton},
+    theme::toggle::{theme_mode, MenuToggleButton, ThemeToggleButton, ThemeToggleSwitch},
     typography::{Typography, TypographyVariant},
 };
 
 use crate::{
     pages::{counter::Counter, home::Home},
-    theme::{ButtonVariant, MenuBarVariant, MenuHeaderVariant},
+    theme::{default_switch_class, ButtonVariant, MenuBarVariant, MenuHeaderVariant},
 };
 
 #[component]
@@ -36,6 +36,7 @@ pub fn Layout(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
         <Menu />
         {children(cx)}
+        <Footer />
     }
 }
 
@@ -61,11 +62,46 @@ fn Menu(cx: Scope) -> impl IntoView {
                             <LinkButton href="/counter" variant={ButtonVariant::Ghost.get()}>
                                 Counter
                             </LinkButton>
-                            <ThemeToggleButton class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
+                            <ThemeToggleButton mode_func={theme_mode} class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
                                 icon_class="w-9 h-9 fill-orange-300 dark:fill-yellow-300 dark:hover:fill-gray-800 hover:bg-yellow-200 dark:hover:bg-yellow-300 rounded-2xl" />
+                            <ThemeToggleSwitch mode_func={theme_mode} class={default_switch_class()} />
                         </div>
                     </div>
             </MenuBar>
         </MenuHeader>
+    }
+}
+
+// Sticky footer
+#[component]
+fn Footer(cx: Scope) -> impl IntoView {
+    view! {cx,
+        <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-slate-900 dark:border-gray-600">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">{"© 2023 "} <a href="https://example.com/" class="hover:underline">{"Footer™"}</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <LinkButton href="#" class="mr-4 hover:underline md:mr-6">
+                        About
+                    </LinkButton>
+                </li>
+                <li>
+                    <LinkButton href="#" class="mr-4 hover:underline md:mr-6">
+                        Privacy Policy
+                    </LinkButton>
+                </li>
+                <li>
+                    <LinkButton href="#" class="mr-4 hover:underline md:mr-6">
+                        Licensing
+                    </LinkButton>
+                </li>
+                <li>
+                    <LinkButton href="#" class="mr-4 hover:underline md:mr-6">
+                       Contact
+                    </LinkButton>
+
+                </li>
+            </ul>
+        </footer>
     }
 }

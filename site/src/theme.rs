@@ -1,4 +1,6 @@
-use leptos_tw_ui::components::variants::base::ClassVariant;
+use leptos_tw_ui::components::{
+    theme::toggle::ThemeToggleSwitchClass, variants::base::ClassVariant,
+};
 
 pub enum ButtonVariant {
     Solid,
@@ -89,5 +91,17 @@ impl MenuBarVariant {
         match self {
             MenuBarVariant::Default => ClassVariant::Vec(DEFAULT),
         }
+    }
+}
+
+pub fn default_switch_class() -> ThemeToggleSwitchClass {
+    ThemeToggleSwitchClass {
+        wrapper: "relative inline-flex h-[24px] w-[34px] shrink-0 cursor-pointer border-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75",
+        switch: "translate-x-0 dark:translate-x-2.5 shadow shadow-gray-700/10 border border-gray-200 bg-background-light dark:border-primary dark:bg-background-dark p-[3px] pointer-events-none inline-block h-5 w-5 transform rounded-full ring-0 transition-transform duration-200 ease-in-out",
+        bar: "bg-gray-200/60 dark:bg-white/10 rounded-full absolute left-0 right-0 h-[0.65rem] top-1/2 translate-y-[-50%]",
+        sun_fill: "fill-yellow-600",
+        moon_fill: "fill-yellow-200",
+        sun: "dark:hidden",
+        moon: "hidden dark:block",
     }
 }
