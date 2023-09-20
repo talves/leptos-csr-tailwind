@@ -108,15 +108,12 @@ where
     // Requires a function that takes a boolean value for toggle or just value
     F: Fn(bool) -> &'static str + 'static,
 {
-    let (theme, set_theme) = create_signal(cx, mode_fn(false));
-    let is_light = Signal::derive(cx, move || theme.get() == "light");
-
     view! { cx,
         <Button
             id=id.unwrap_or(Box::new(""))
             class=class
             style=style.unwrap_or(Box::new(""))
-            on_click={move |_e| {set_theme(mode_fn(true));}}
+            on_click={move |_e| {mode_fn(true);}}
             disabled=disabled
         >
             <IconMoon class=icon_dark_class.get() />
