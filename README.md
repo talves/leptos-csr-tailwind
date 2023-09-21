@@ -48,3 +48,22 @@ tailwindcss -i style/input.css -o style/output.css --minify
 
 This option allows you to do what you would like and have more control over the commands. You could also remove the `Trunk.toml` and run the commands in their own processes also. Debugging without minify would be nice, but I only do it when there's a need. I like using what's going to be in production, but there are drawbacks to both. Your choice!
 
+### Deployment
+
+There are a lot of hosting providers out there and since we are using Rust and Leptos (CSR) Client Side Rendering we can pick one that supports both.
+
+#### Netlify
+
+We will use a shell command line to check for a cached `trunk` install located at `bin/install_trunk.sh`.
+
+```bash
+chmod 744 ./bin/install_trunk.sh && TRUNK_VERSION=0.17.5 ./bin/install_trunk.sh
+```
+
+`netlify.toml` is setup to run the package scripts with the setups for the deploy
+
+```toml
+[build]
+publish = "site/dist/"
+command = "yarn install_trunk && yarn build"
+```

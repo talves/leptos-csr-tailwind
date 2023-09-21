@@ -8,7 +8,8 @@
     "tw:release": "tailwindcss -i style/input.css -o site/style/output.css --minify",
     "dev": "trunk serve --open",
     "clean": "rm ./site/style/output.css && rm -rf site/dist",
-    "build": "yarn tw:release && trunk build --release"
+    "build": "trunk build --release",
+    "install_trunk": "chmod 744 ./bin/install_trunk.sh && TRUNK_VERSION=0.17.5 ./bin/install_trunk.sh"
   },
   "repository": "git@github.com:talves/leptos-tutorial-example.git",
   "author": "talves <tony@3alves.com>",
