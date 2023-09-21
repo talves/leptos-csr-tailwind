@@ -35,7 +35,7 @@ pub fn Home(cx: Scope) -> impl IntoView {
                   </div>
                   //   <!-- End Grid -->
                   <Typography variant=TypographyVariant::H1 class="font-weight-20 text-3xl text-blue-800 dark:text-gray-200">Buttons</Typography>
-                  <div class="border rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                  <div class="border rounded-xl shadow-sm dark:bg-slate-800 dark:border-slate-600 p-5">
                       <div class="p-6 inline-block">
                           <Button class="ml-0 mx-1 bg-blue-400" on_click={|e| println!("{}", e.to_string())}>{"Default (Unstyled)"}</Button>
                           <Button class="ml-0 mx-1" on_click={|e| web_sys::console::log_1(&e.target().unwrap())} variant={ButtonVariant::Solid.get()}>{"Solid"}</Button>

@@ -58,7 +58,7 @@ pub fn theme_mode(toggle: bool) -> &'static str {
         Some(query) => query.matches(),
         None => false,
     };
-    // web_sys::console::log_1(&wasm_bindgen::JsValue::from(&system_dark_preferred.to_string()));
+    // log!("(prefers-color-scheme: dark) {}", &system_dark_preferred.to_string());
     let mut stored_theme_mode = match local_storage {
         Some(storage) => match storage.get("theme-mode") {
             Ok(value) => {
@@ -108,6 +108,8 @@ where
     // Requires a function that takes a boolean value for toggle or just value
     F: Fn(bool) -> &'static str + 'static,
 {
+    let _initial = mode_fn(false);
+
     view! { cx,
         <Button
             id=id.unwrap_or(Box::new(""))
@@ -147,6 +149,8 @@ pub fn ThemeToggleSwitch<F>(
 where
     F: Fn(bool) -> &'static str + 'static,
 {
+    let _initial = mode_fn(false);
+
     view! { cx,
         <Button
             id=id.unwrap_or(Box::new(""))

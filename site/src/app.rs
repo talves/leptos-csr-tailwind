@@ -43,6 +43,7 @@ pub fn Layout(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 fn Menu(cx: Scope) -> impl IntoView {
     let (active, set_active) = create_signal(cx, false);
+    log!("loading Menu");
 
     view! {cx,
         <MenuHeader variant={MenuHeaderVariant::Default.get()}>
