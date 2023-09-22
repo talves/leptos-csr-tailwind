@@ -9,8 +9,11 @@ use leptos_tw_ui::components::{
 };
 
 use crate::{
-    pages::{counter::Counter, home::Home},
-    theme::{ButtonVariant, MenuBarVariant, MenuHeaderVariant, ToggleSwitchClassVariant},
+    pages::{counter::Counter, example::ExamplePage, home::Home},
+    theme::{
+        default_page_class, ButtonVariant, MenuBarVariant, MenuHeaderVariant,
+        ToggleSwitchClassVariant, TypographyClass,
+    },
 };
 
 #[component]
@@ -25,6 +28,7 @@ pub fn App(cx: Scope) -> impl IntoView {
                 <Routes>
                     <Route path="/" view=move |cx| view! {cx, <Home/> }/>
                     <Route path="/counter" view=move |cx| view! {cx, <Counter/> }/>
+                    <Route path="/example" view=move |cx| view! {cx, <ExamplePage/> }/>
                 </Routes>
             </Router>
         </Layout>
@@ -34,9 +38,22 @@ pub fn App(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Layout(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <Menu />
+        <LayoutWrapper>
+            <Menu />
+            {children(cx)}
+            <Footer />
+        </LayoutWrapper>
+    }
+}
+
+#[component]
+pub fn LayoutWrapper(cx: Scope, children: Children) -> impl IntoView {
+    let default_class = default_page_class();
+
+    view! {cx,
+        <div class=default_class.wrapper class:min-h-screen=true>
         {children(cx)}
-        <Footer />
+        </div>
     }
 }
 
@@ -49,7 +66,7 @@ fn Menu(cx: Scope) -> impl IntoView {
         <MenuHeader variant={MenuHeaderVariant::Default.get()}>
             <MenuBar variant={MenuBarVariant::Default.get()}>
                     <div class="flex items-center justify-between">
-                        <Typography variant=TypographyVariant::Span class="flex-none font-weight-20 text-3xl text-blue-800 dark:text-gray-200">Default Menu Bar</Typography>
+                        <span class="flex-none font-weight-20 text-3xl text-blue-800 dark:text-gray-200">Default Menu Bar</span>
                         <div class="sm:hidden">
                             <MenuToggleButton on_change=set_active class="focus:outline-none p-1"
                                 icon_class="w-7 h-7 fill-gray-700 hover:fill-gray-500 dark:fill-gray-300 dark:hover:fill-gray-100 dark:hover:outline rounded-2xl" />
@@ -62,6 +79,9 @@ fn Menu(cx: Scope) -> impl IntoView {
                             </LinkButton>
                             <LinkButton href="/counter" variant={ButtonVariant::Ghost.get()}>
                                 Counter
+                            </LinkButton>
+                            <LinkButton href="/example" variant={ButtonVariant::Ghost.get()}>
+                                Examples
                             </LinkButton>
                             <ThemeToggleButton mode_fn={theme_mode} class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
                                 icon_light_class="dark:hidden w-9 h-9 fill-orange-300 hover:bg-yellow-200 rounded-2xl"

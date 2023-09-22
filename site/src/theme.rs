@@ -94,6 +94,16 @@ impl MenuBarVariant {
     }
 }
 
+pub struct ThemePageClass {
+    pub wrapper: &'static str,
+}
+
+pub fn default_page_class() -> ThemePageClass {
+    ThemePageClass {
+        wrapper: "bg-gradient-to-br from-teal-100 via-violet-200 to-blue-300 dark:from-teal-700 dark:via-violet-800 dark:to-blue-900",
+    }
+}
+
 pub fn default_switch_class() -> ThemeToggleSwitchClass {
     ThemeToggleSwitchClass {
         wrapper: "relative inline-flex h-[24px] w-[34px] shrink-0 cursor-pointer border-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75",
@@ -120,6 +130,91 @@ impl ToggleSwitchClassVariant {
                 encased.bar = "bg-gray-300/60 dark:bg-gray-200/40 rounded-full absolute left-0 right-0 h-6 top-1/2 translate-y-[-50%] ring-1";
                 encased
             }
+        }
+    }
+}
+
+pub enum TypographyClass {
+    H1,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6,
+    Paragraph,
+    Span,
+    Code,
+}
+
+impl TypographyClass {
+    pub fn get(&self) -> ClassVariant {
+        const H1: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-3xl",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const H2: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-2xl",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const H3: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-xl",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const H4: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-md",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const H5: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-sm",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const H6: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-xsm",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const P: &'static [&'static str] = &[
+            "font-weight-20",
+            "text-3xl",
+            "text-blue-800",
+            "dark:text-gray-200",
+        ];
+        const SPAN: &'static [&'static str] = &["flex-none", "text-blue-800", "dark:text-gray-200"];
+        const CODE: &'static [&'static str] = &[
+            "text-sm",
+            "sm:text-base",
+            "inline-flex",
+            "text-left",
+            "items-center",
+            "space-x-4",
+            "bg-gray-800",
+            "text-white",
+            "rounded-lg",
+            "p-4",
+            "pl-6",
+        ];
+
+        match self {
+            TypographyClass::H1 => ClassVariant::Vec(H1),
+            TypographyClass::H2 => ClassVariant::Vec(H2),
+            TypographyClass::H3 => ClassVariant::Vec(H3),
+            TypographyClass::H4 => ClassVariant::Vec(H4),
+            TypographyClass::H5 => ClassVariant::Vec(H5),
+            TypographyClass::H6 => ClassVariant::Vec(H6),
+            TypographyClass::Paragraph => ClassVariant::Vec(P),
+            TypographyClass::Span => ClassVariant::Vec(SPAN),
+            TypographyClass::Code => ClassVariant::Vec(CODE),
         }
     }
 }

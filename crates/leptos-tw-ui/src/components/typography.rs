@@ -1,5 +1,7 @@
 use leptos::*;
 
+use super::variants::base::ClassVariant;
+
 pub enum TypographyVariant {
     H1,
     H2,
@@ -17,7 +19,9 @@ pub fn Typography(
     cx: Scope,
     variant: TypographyVariant,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    /// Implement trait TypographyClass for TypographyClassVariant
+    #[prop(into, optional)]
+    class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
@@ -120,12 +124,12 @@ pub fn Typography(
 pub fn H1(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <h1 id=id class=class style=style>
+        <h1 id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </h1>
     }
@@ -135,12 +139,12 @@ pub fn H1(
 pub fn H2(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <h2 id=id class=class style=style>
+        <h2 id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </h2>
     }
@@ -150,12 +154,12 @@ pub fn H2(
 pub fn H3(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <h3 id=id class=class style=style>
+        <h3 id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </h3>
     }
@@ -165,12 +169,12 @@ pub fn H3(
 pub fn H4(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <h4 id=id class=class style=style>
+        <h4 id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </h4>
     }
@@ -180,12 +184,12 @@ pub fn H4(
 pub fn H5(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <h5 id=id class=class style=style>
+        <h5 id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </h5>
     }
@@ -195,12 +199,12 @@ pub fn H5(
 pub fn H6(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <h6 id=id class=class style=style>
+        <h6 id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </h6>
     }
@@ -210,12 +214,12 @@ pub fn H6(
 pub fn P(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <p id=id class=class style=style>
+        <p id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </p>
     }
@@ -225,12 +229,12 @@ pub fn P(
 pub fn Span(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <span id=id class=class style=style>
+        <span id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
             {children(cx)}
         </span>
     }
@@ -240,13 +244,13 @@ pub fn Span(
 pub fn Code(
     cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
-    #[prop(into, optional)] class: Option<AttributeValue>,
+    #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     #[prop(optional)] inline: Option<bool>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <code id=id class=class style=style inline=inline.map(|it| it.to_string()) >
+        <code id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style inline=inline.map(|it| it.to_string()) >
             {children(cx)}
         </code>
     }
