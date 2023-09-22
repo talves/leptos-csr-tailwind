@@ -45,10 +45,12 @@ pub fn theme_mode(toggle: bool) -> &'static str {
     // Accessing the Dom and toggle/set the class name on body!
     let window = web_sys::window().expect("missing global window");
     let document = window.document().expect("expected document on window");
-    let body = document
-        .body()
-        .expect("document expect to have have a body")
-        .dyn_into::<web_sys::HtmlBodyElement>()
+    let document_el = document.dyn_into::<web_sys::Document>().unwrap();
+    let html_html = document_el
+        .query_selector("html")
+        .unwrap()
+        .unwrap()
+        .dyn_into::<web_sys::HtmlHtmlElement>()
         .unwrap();
     let local_storage = window.local_storage().expect("No access to local storage");
     let media = window
@@ -67,7 +69,7 @@ pub fn theme_mode(toggle: bool) -> &'static str {
                     // No theme-mode found in local storage
                     None => {
                         // Check for class name on body
-                        resolve_toggle(body.class_name(), toggle, system_dark_preferred)
+                        resolve_toggle(html_html.class_name(), toggle, system_dark_preferred)
                     }
                 };
                 let _ = storage.set("theme-mode", new_theme_mode);
@@ -78,16 +80,15 @@ pub fn theme_mode(toggle: bool) -> &'static str {
         None => "",
     };
     if stored_theme_mode == "" {
-        stored_theme_mode = resolve_toggle(body.class_name(), toggle, system_dark_preferred);
+        stored_theme_mode = resolve_toggle(html_html.class_name(), toggle, system_dark_preferred);
         // There was an error accessing local storage, so use the body class name
-        body.set_class_name(stored_theme_mode);
+        html_html.set_class_name(stored_theme_mode);
     } else {
         // Stored theme mode has been resolved and set in local storage, so set the class name
-        body.set_class_name(stored_theme_mode);
+        html_html.set_class_name(stored_theme_mode);
     }
+    // web_sys::console::log_1(&html_html);
     stored_theme_mode
-
-    // web_sys::console::log_1(&body);
 }
 
 #[component]
