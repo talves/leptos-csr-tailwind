@@ -4,15 +4,14 @@ use leptos_router::*;
 use leptos_tw_ui::components::{
     buttons::button::LinkButton,
     menu::bars::{MenuBar, MenuHeader},
-    theme::toggle::{theme_mode, MenuToggleButton, ThemeToggleButton, ThemeToggleSwitch},
-    typography::{Typography, TypographyVariant},
+    theme::toggle::{theme_mode, MenuToggleButton, ThemeToggleSwitch},
 };
 
 use crate::{
     pages::{counter::Counter, example::ExamplePage, home::Home},
     theme::{
         default_page_class, ButtonVariant, MenuBarVariant, MenuHeaderVariant,
-        ToggleSwitchClassVariant, TypographyClass,
+        ToggleSwitchClassVariant,
     },
 };
 
@@ -47,7 +46,7 @@ pub fn Layout(cx: Scope, children: Children) -> impl IntoView {
 }
 
 #[component]
-pub fn LayoutWrapper(cx: Scope, children: Children) -> impl IntoView {
+fn LayoutWrapper(cx: Scope, children: Children) -> impl IntoView {
     let default_class = default_page_class();
 
     view! {cx,
@@ -83,10 +82,6 @@ fn Menu(cx: Scope) -> impl IntoView {
                             <LinkButton href="/example" variant={ButtonVariant::Ghost.get()}>
                                 Examples
                             </LinkButton>
-                            <ThemeToggleButton mode_fn={theme_mode} class="text-yellow-500 dark:text-primary-400 focus:outline-none text-sm p-1"
-                                icon_light_class="dark:hidden w-9 h-9 fill-orange-300 hover:bg-yellow-200 rounded-2xl"
-                                icon_dark_class="hidden dark:block w-9 h-9 fill-yellow-300 hover:fill-gray-800 hover:bg-yellow-300 rounded-2xl" />
-                            <ThemeToggleSwitch mode_fn={theme_mode} class={ToggleSwitchClassVariant::Knob.get()} />
                             <ThemeToggleSwitch mode_fn={theme_mode} class={ToggleSwitchClassVariant::Encased.get()} />
                         </div>
                     </div>

@@ -10,7 +10,9 @@ pub enum TypographyVariant {
     H5,
     H6,
     Paragraph,
-    Span,
+    SpanInline,
+    Span { inline: bool },
+    CodeInline,
     Code { inline: bool },
 }
 
@@ -96,12 +98,24 @@ pub fn Typography(
             },
         )
         .into_view(cx),
-        TypographyVariant::Span => Span(
+        TypographyVariant::Span { inline } => Span(
             cx,
             SpanProps {
                 id,
                 class,
                 style,
+                inline: Some(inline),
+                children,
+            },
+        )
+        .into_view(cx),
+        TypographyVariant::SpanInline => Span(
+            cx,
+            SpanProps {
+                id,
+                class,
+                style,
+                inline: Some(true),
                 children,
             },
         )
@@ -113,6 +127,17 @@ pub fn Typography(
                 class,
                 style,
                 inline: Some(inline),
+                children,
+            },
+        )
+        .into_view(cx),
+        TypographyVariant::CodeInline => Code(
+            cx,
+            CodeProps {
+                id,
+                class,
+                style,
+                inline: Some(true),
                 children,
             },
         )
@@ -231,10 +256,11 @@ pub fn Span(
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] class: Option<ClassVariant>,
     #[prop(into, optional)] style: Option<AttributeValue>,
+    #[prop(optional)] inline: Option<bool>,
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <span id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style>
+        <span id=id class=format!{"{} {}", class.unwrap_or(ClassVariant::Unstyled).to_string(), {if inline.is_some() {if inline.unwrap() {"inline-flex inline"} else {"block"}} else {"block"}}} style=style>
             {children(cx)}
         </span>
     }
@@ -250,7 +276,7 @@ pub fn Code(
     children: Children,
 ) -> impl IntoView {
     view! { cx,
-        <code id=id class=class.unwrap_or(ClassVariant::Unstyled).to_string() style=style inline=inline.map(|it| it.to_string()) >
+        <code id=id class=format!{"{} {}", class.unwrap_or(ClassVariant::Unstyled).to_string(), {if inline.is_some() {if inline.unwrap() {"inline-flex inline"} else {"block"}} else {"block"}}} style=style >
             {children(cx)}
         </code>
     }

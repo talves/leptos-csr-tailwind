@@ -180,25 +180,19 @@ impl TypographyClass {
         ];
         const H6: &'static [&'static str] = &[
             "font-weight-20",
-            "text-xsm",
+            "text-xs",
             "text-blue-800",
             "dark:text-gray-200",
         ];
-        const P: &'static [&'static str] = &[
-            "font-weight-20",
-            "text-3xl",
-            "text-blue-800",
-            "dark:text-gray-200",
-        ];
+        const P: &'static [&'static str] = &["text-blue-800", "dark:text-gray-200"];
         const SPAN: &'static [&'static str] = &["flex-none", "text-blue-800", "dark:text-gray-200"];
         const CODE: &'static [&'static str] = &[
             "text-sm",
             "sm:text-base",
-            "inline-flex",
             "text-left",
             "items-center",
-            "space-x-4",
             "bg-gray-800",
+            "dark:bg-gray-700",
             "text-white",
             "rounded-lg",
             "p-4",
