@@ -7,8 +7,8 @@ use leptos_tw_ui::components::{
 };
 
 #[component]
-pub fn Home(cx: Scope) -> impl IntoView {
-    view! {cx,
+pub fn Home() -> impl IntoView {
+    view! {
       <Title text="Leptos + Tailwindcss"/>
       <Main id="content" class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
               <div class="">
@@ -19,7 +19,7 @@ pub fn Home(cx: Scope) -> impl IntoView {
                   <p class="text-sm uppercase tracking-wider">
                       Preview
                   </p>
-                  <ContainerFromProp render_view=|| view! { cx, <p class="mt-1 font-medium">
+                  <ContainerFromProp render_view=|| view! { <p class="mt-1 font-medium">
                       {"This is content from a render_view property"}
                   </p>} />
                   </div>

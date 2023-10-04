@@ -3,23 +3,21 @@ use leptos::*;
 
 #[component]
 pub fn Container(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] variant: OptionMaybeSignal<ClassVariant>,
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
-    view! {cx,
+    view! {
         <div id=id class={format!("{} {}", variant.get(), class.get())} style=style>
-            {children(cx)}
+            {children()}
         </div>
     }
 }
 
 #[component]
 pub fn ContainerFromProp<F, IV>(
-    cx: Scope,
     /// Takes a function (type F) that returns anything that can be
     /// converted into a View (type IV)
     render_view: F,
@@ -28,22 +26,21 @@ where
     F: Fn() -> IV,
     IV: IntoView,
 {
-    view! {cx,
+    view! {
         <>{render_view()}</>
     }
 }
 
 #[component]
 pub fn Main(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] class: Option<AttributeValue>,
     #[prop(into, optional)] style: Option<AttributeValue>,
     children: Children,
 ) -> impl IntoView {
-    view! {cx,
+    view! {
         <main id=id role="main" class=class style=style>
-            {children(cx)}
+            {children()}
         </main>
     }
 }

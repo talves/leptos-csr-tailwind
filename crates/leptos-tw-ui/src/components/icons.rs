@@ -4,12 +4,11 @@ use crate::OptionMaybeSignal;
 
 #[component]
 pub fn IconSun(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
         <svg
             id=id
             class=class.get()
@@ -27,12 +26,11 @@ pub fn IconSun(
 
 #[component]
 pub fn IconMoon(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
         <svg
         id=id
         class=class.get()
@@ -59,12 +57,11 @@ pub fn IconMoon(
 
 #[component]
 pub fn IconMenuOn(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
         <svg
             id=id
             class=class.get()
@@ -82,12 +79,11 @@ pub fn IconMenuOn(
 
 #[component]
 pub fn IconMenuOff(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] class: OptionMaybeSignal<String>,
     #[prop(into, optional)] style: Option<AttributeValue>,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
         <svg
             id=id
             class=class.get()

@@ -10,8 +10,8 @@ use leptos_tw_ui::components::{
 use crate::theme::{ButtonVariant, ToggleSwitchClassVariant, TypographyClass};
 
 #[component]
-pub fn ExamplePage(cx: Scope) -> impl IntoView {
-    view! {cx,
+pub fn ExamplePage() -> impl IntoView {
+    view! {
         <Title text="Leptos + Tailwindcss | Examples"/>
         <Main id="main" class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto pb-[100px] text-gray-900 dark:text-gray-400">
             <div>
@@ -29,8 +29,8 @@ pub fn ExamplePage(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-fn ButtonSection(cx: Scope) -> impl IntoView {
-    view! {cx,
+fn ButtonSection() -> impl IntoView {
+    view! {
         <section class="max-w-[70rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>Buttons</Typography>
             <div class="border rounded-xl shadow-sm  border-blue-600 dark:bg-slate-800 dark:border-slate-600 p-5 mt-3">
@@ -70,8 +70,8 @@ fn ButtonSection(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-fn TypographySection(cx: Scope) -> impl IntoView {
-    view! {cx,
+fn TypographySection() -> impl IntoView {
+    view! {
         <section class="max-w-[70rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>Typography</Typography>
             <div class="border rounded-xl shadow-sm  border-blue-600 dark:bg-slate-800 dark:border-slate-600 p-5 mt-3">
@@ -100,8 +100,8 @@ fn TypographySection(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-fn DarkModeSection(cx: Scope) -> impl IntoView {
-    view! {cx,
+fn DarkModeSection() -> impl IntoView {
+    view! {
         <section class="max-w-[70rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>Dark/Light Theme Toggle</Typography>
             <Typography variant=TypographyVariant::Paragraph class={TypographyClass::Paragraph.get()}>
