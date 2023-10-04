@@ -5,11 +5,11 @@ use crate::theme::ButtonVariant;
 use leptos_tw_ui::components::buttons::button::{Button, LinkButton};
 
 #[component]
-pub fn Counter(cx: Scope) -> impl IntoView {
-    let (value, set_value) = create_signal(cx, 0);
+pub fn Counter() -> impl IntoView {
+    let (value, set_value) = create_signal(0);
 
     // thanks to https://tailwindcomponents.com/component/blue-buttons-example for the showcase layout
-    view! {cx,
+    view! {
         <Title text="Leptos + Tailwindcss | Counter"/>
         <main>
             <div class="bg-gradient-to-tl from-blue-800 to-blue-500 text-white font-mono flex flex-col min-h-screen">

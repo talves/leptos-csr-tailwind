@@ -5,7 +5,6 @@ use crate::OptionMaybeSignal;
 
 #[component]
 pub fn Button<F>(
-    cx: Scope,
     on_click: F,
     #[prop(into, optional)] variant: OptionMaybeSignal<ClassVariant>,
     #[prop(into, optional)] disabled: OptionMaybeSignal<bool>,
@@ -17,7 +16,7 @@ pub fn Button<F>(
 where
     F: Fn(MouseEvent) + 'static,
 {
-    view! { cx,
+    view! {
         <button
             id=id
             class=format!("{} {}", variant.get(), class.get())
@@ -30,14 +29,13 @@ where
                 }
             }
         >
-            { children(cx) }
+            { children() }
         </button>
     }
 }
 
 #[component]
 pub fn LinkButton(
-    cx: Scope,
     #[prop(into, optional)] id: Option<AttributeValue>,
     #[prop(into, optional)] variant: OptionMaybeSignal<ClassVariant>,
     #[prop(into, optional)] disabled: OptionMaybeSignal<bool>,
@@ -46,7 +44,7 @@ pub fn LinkButton(
     href: &'static str,
     children: Children,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
         <a
             id=id
             href=href // format!("{}", )
@@ -54,7 +52,7 @@ pub fn LinkButton(
             style=style
             aria-disabled=move || disabled.get()
         >
-            { children(cx) }
+            { children() }
         </a>
     }
 }

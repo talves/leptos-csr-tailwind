@@ -2,7 +2,7 @@ mod app;
 mod pages;
 mod theme;
 
-use leptos::*;
+use leptos::{logging::log, *};
 
 use crate::app::App;
 
@@ -12,5 +12,5 @@ fn main() {
 
     log!("csr mode - mounting to body");
 
-    leptos::mount_to_body(|cx| view! { cx, <App/> })
+    leptos::mount_to_body(|| view! { <App/> })
 }

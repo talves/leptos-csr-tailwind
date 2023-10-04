@@ -35,7 +35,7 @@ impl<T: 'static, I: Into<MaybeSignal<T>>> From<I> for OptionMaybeSignal<T> {
     }
 }
 
-impl<T: Clone + Default> SignalGet<T> for OptionMaybeSignal<T> {
+impl<T: Clone + Default> SignalGet for OptionMaybeSignal<T> {
     fn get(&self) -> T {
         match &self.0 {
             Some(signal) => signal.get(),
@@ -49,9 +49,11 @@ impl<T: Clone + Default> SignalGet<T> for OptionMaybeSignal<T> {
             None => Some(T::default()),
         }
     }
+
+    type Value = T;
 }
 
-impl<T: Clone + Default> SignalGetUntracked<T> for OptionMaybeSignal<T> {
+impl<T: Clone + Default> SignalGetUntracked for OptionMaybeSignal<T> {
     fn get_untracked(&self) -> T {
         match &self.0 {
             Some(signal) => signal.get_untracked(),
@@ -65,4 +67,6 @@ impl<T: Clone + Default> SignalGetUntracked<T> for OptionMaybeSignal<T> {
             None => Some(T::default()),
         }
     }
+
+    type Value = T;
 }

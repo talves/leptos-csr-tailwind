@@ -5,7 +5,7 @@ members = ["crates/leptos-tw-ui", "site"]
 # exclude = ["site"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.2.0"
 
 [workspace.dependencies]
 leptos-tw-ui = { path = "crates/leptos-tw-ui", default-features = false }

@@ -1,4 +1,4 @@
-use leptos::*;
+use leptos::{logging::log, *};
 use leptos_meta::*;
 use leptos_router::*;
 use leptos_tw_ui::components::{
@@ -16,18 +16,18 @@ use crate::{
 };
 
 #[component]
-pub fn App(cx: Scope) -> impl IntoView {
-    provide_meta_context(cx);
+pub fn App() -> impl IntoView {
+    provide_meta_context();
 
-    view! {cx,
+    view! {
         <Layout>
             // <Stylesheet id="leptos" href="/pkg/tailwind.css"/>
             <Link rel="shortcut icon" type_="image/ico" href="/favicon.ico"/>
             <Router>
                 <Routes>
-                    <Route path="/" view=move |cx| view! {cx, <Home/> }/>
-                    <Route path="/counter" view=move |cx| view! {cx, <Counter/> }/>
-                    <Route path="/example" view=move |cx| view! {cx, <ExamplePage/> }/>
+                    <Route path="/" view=move || view! { <Home/> }/>
+                    <Route path="/counter" view=move || view! { <Counter/> }/>
+                    <Route path="/example" view=move || view! { <ExamplePage/> }/>
                 </Routes>
             </Router>
         </Layout>
@@ -35,33 +35,33 @@ pub fn App(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn Layout(cx: Scope, children: Children) -> impl IntoView {
-    view! {cx,
+pub fn Layout(children: Children) -> impl IntoView {
+    view! {
         <LayoutWrapper>
             <Menu />
-            {children(cx)}
+            {children()}
             <Footer />
         </LayoutWrapper>
     }
 }
 
 #[component]
-fn LayoutWrapper(cx: Scope, children: Children) -> impl IntoView {
+fn LayoutWrapper(children: Children) -> impl IntoView {
     let default_class = default_page_class();
 
-    view! {cx,
+    view! {
         <div class=default_class.wrapper class:min-h-screen=true>
-        {children(cx)}
+        {children()}
         </div>
     }
 }
 
 #[component]
-fn Menu(cx: Scope) -> impl IntoView {
-    let (active, set_active) = create_signal(cx, false);
+fn Menu() -> impl IntoView {
+    let (active, set_active) = create_signal(false);
     log!("loading Menu");
 
-    view! {cx,
+    view! {
         <MenuHeader variant={MenuHeaderVariant::Default.get()}>
             <MenuBar variant={MenuBarVariant::Default.get()}>
                     <div class="flex items-center justify-between">
@@ -92,8 +92,8 @@ fn Menu(cx: Scope) -> impl IntoView {
 
 // Sticky footer
 #[component]
-fn Footer(cx: Scope) -> impl IntoView {
-    view! {cx,
+fn Footer() -> impl IntoView {
+    view! {
         <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-slate-900 dark:border-gray-600">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">{"© 2023 "} <a href="https://example.com/" class="hover:underline">{"Footer™"}</a>. All Rights Reserved.
             </span>
