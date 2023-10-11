@@ -8,6 +8,7 @@ use leptos_tw_ui::components::{
 };
 
 use crate::theme::{ButtonVariant, ToggleSwitchClassVariant, TypographyClass};
+use std::ops::Not;
 
 #[component]
 pub fn ExamplePage() -> impl IntoView {
@@ -30,6 +31,8 @@ pub fn ExamplePage() -> impl IntoView {
 
 #[component]
 fn ButtonSection() -> impl IntoView {
+    let (disabled, set_disabled) = create_signal(false);
+
     view! {
         <section class="max-w-[70rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <Typography variant=TypographyVariant::H2 class={TypographyClass::H2.get()}>Buttons</Typography>
@@ -63,6 +66,9 @@ fn ButtonSection() -> impl IntoView {
                     <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Soft.get()}>{"Soft"}</Button>
                     <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::White.get()}>{"White"}</Button>
                     <Button class="ml-0 mx-1" on_click={|e| println!("{}", e.to_string())} variant={ButtonVariant::Link.get()}>{"Link"}</Button>
+                    <Button class="ml-0 mx-1" on_click=move |_| set_disabled(if !disabled.get_untracked() {true} else {false}) disabled=disabled variant={ButtonVariant::Solid.get()}>{move || if disabled.get() {"Disabled"} else {"Enabled"}}</Button>
+                    <Button class="ml-0 mx-1" on_click=move |_| set_disabled.update(|value| *value = if *value {false} else {true}) disabled=disabled variant={ButtonVariant::Solid.get()}>{move || if disabled.get() {"Disabled"} else {"Enabled"}}</Button>
+                    <Button class="ml-0 mx-1" on_click=move |_| set_disabled.update(|value| *value = value.not()) disabled=disabled variant={ButtonVariant::Solid.get()}>{move || if disabled.get() {"Disabled"} else {"Enabled"}}</Button>
                 </div>
             </div>
         </section>
