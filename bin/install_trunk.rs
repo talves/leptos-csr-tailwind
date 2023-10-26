@@ -4,6 +4,7 @@
 //! [package]
 //! name = "install_trunk"
 //! version = "0.1.0"
+//! edition = "2021"
 //!
 ////! [dependencies]
 ////! clap = { version = "4.2", features = ["derive"] }
@@ -49,7 +50,8 @@ fn main() {
         // println!("success: {}", output.status.success());
         // println!("status: {}", output.status);
         // println!("status_code: {}", status_code.to_string());
-        // println!("stdout: {}", version);
+        // println!("version: {}", version);
+        // println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
         // println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
 
         if target_version == version {
@@ -105,5 +107,6 @@ fn install(cmd: &str) -> bool {
         Some(code) => code,
         None => -1,
     };
+
     status_code == 0
 }

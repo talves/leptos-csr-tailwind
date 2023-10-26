@@ -1,5 +1,7 @@
 use leptos::*;
 
+use crate::OptionMaybeSignal;
+
 #[component]
 pub fn Footer<F, IV>(
     /// Takes a function (type F) that returns anything that can be
@@ -7,13 +9,14 @@ pub fn Footer<F, IV>(
     render_prop: F,
     /// `children` takes the `Children` type
     children: Children,
+    #[prop(into, optional)] class: OptionMaybeSignal<String>,
 ) -> impl IntoView
 where
     F: Fn() -> IV,
     IV: IntoView,
 {
     view! {
-    <footer className="py-6 md:px-8 md:py-0">
+    <footer class=move || format!("{}", class.get())>
         {render_prop()}
         {children()}
     </footer>
