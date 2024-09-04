@@ -1,5 +1,5 @@
 [package]
-name = "leptos-tw-ui"
+name = "leptos-cms"
 version = { workspace = true }
 edition = "2021"
 

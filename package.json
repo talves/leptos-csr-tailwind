@@ -9,7 +9,7 @@
     "dev": "trunk serve --open",
     "clean": "rm ./site/style/output.css && rm -rf site/dist",
     "build": "trunk build --release",
-    "install_trunk": "chmod 744 ./bin/install_trunk.sh && TRUNK_VERSION=0.17.5 ./bin/install_trunk.sh"
+    "install_trunk": "chmod 744 ./bin/install_trunk.sh && TRUNK_VERSION=0.20.3 ./bin/install_trunk.sh"
   },
   "repository": "git@github.com:talves/leptos-tutorial-example.git",
   "author": "talves <tony@3alves.com>",

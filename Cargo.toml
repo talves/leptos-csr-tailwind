@@ -1,7 +1,6 @@
 [workspace]
 resolver = "2"
-edition = "2021"
-members = ["crates/leptos-tw-ui", "site"]
+members = ["crates/leptos-tw-ui", "crates/leptos-cms", "site"]
 # exclude = ["site"]
 
 [workspace.package]
@@ -9,4 +8,5 @@ version = "0.2.0"
 
 [workspace.dependencies]
 leptos-tw-ui = { path = "crates/leptos-tw-ui", default-features = false }
+leptos-cms = { path = "crates/leptos-cms", default-features = false }
 site = { path = "./site", default-features = false }
