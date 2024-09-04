@@ -2,5 +2,7 @@
 target/
 dist/
 
+Cargo.lock
+
 # css style output (tailwind)
 /site/style/output.css
