@@ -1,5 +1,5 @@
 #!/usr/bin/env -S cargo +nightly -Zscript
-//! ```
+//! ```cargo
 //! [package]
 //! name = "gif_mgif"
 //! version = "0.1.0"
