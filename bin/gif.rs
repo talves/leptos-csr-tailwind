@@ -1,13 +1,13 @@
 #!/usr/bin/env -S cargo +nightly -Zscript
-```
-[package]
-name = "gif_mgif"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-gif = { version = "0.13.1" }
-```
+//! ```
+//! [package]
+//! name = "gif_mgif"
+//! version = "0.1.0"
+//! edition = "2021"
+//!
+//! [dependencies]
+//! gif = { version = "0.13.1" }
+//! ```
 
 use gif::{Encoder, Frame, Repeat};
 

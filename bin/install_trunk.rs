@@ -1,22 +1,12 @@
 #!/usr/bin/env -S cargo +nightly -Zscript
-```
-[package]
-name = "install_trunk"
-version = "0.3.0"
-edition = "2021"
-
-[dependencies]
-# clap = { version = "4.4.12", features = ["derive"] }
-```
-
 //! ```cargo
 //! [package]
 //! name = "install_trunk"
-//! version = "0.2.0"
+//! version = "0.3.0"
 //! edition = "2021"
 //!
-////! [dependencies]
-////! clap = { version = "4.4.12", features = ["derive"] }
+//! [dependencies]
+//! # clap = { version = "4.4.12", features = ["derive"] }
 //! ```
 
 use std::env;
