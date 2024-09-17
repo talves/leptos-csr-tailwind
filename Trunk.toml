@@ -6,5 +6,5 @@ dist = "site/dist"
 stage = "pre_build"
 # command = "sh"
 # command_arguments = ["-c", "npx tailwindcss -i style/input.css -o style/output.css"]
-command = "yarn"
-command_arguments = ["tw:release"]
+command = "npm"
+command_arguments = ["run", "tw:release"]
